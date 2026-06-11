@@ -1,0 +1,15 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+#agaum{
+    text-align: center;
+    margin-bottom: 100px;
+}
+
+#tabela{
+    margin-left: 150px;
+    align-items: center;
+    width: 1500px;
+}

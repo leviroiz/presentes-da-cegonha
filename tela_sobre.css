@@ -1,0 +1,198 @@
+.navbar{
+    background-color: #99a5ff;
+    height: 120px;
+    position: relative;
+    margin-bottom: 115px;
+  }
+  
+  #menu-desk{
+      display: inline;
+  }
+  
+  .logo{
+    margin-top: 5px;
+    left: 40px;
+    height: 112px;
+    width: 112px;
+    background-color: transparent;
+    position: relative;
+    margin-top: 4px;
+    display: block;
+  }
+  
+  #carrin{
+    z-index: 1;
+    position: absolute;
+    margin-top: 25px;
+    margin-left: 1180px;
+    background-color: #f0f0f0;
+    padding: 5px;
+    width: 200px;
+    height: 70px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: right;
+  }
+  
+  .carrin{
+    color: #99a5ff;
+    margin-top: 27px;
+    z-index: 1;
+    font-size: 22px; 
+    font-family: 'Rubik', sans-serif;
+    position: absolute;
+    margin-left: 1250px;
+  }
+  
+  #seta{
+    position: relative;
+    margin-right: 4px;
+    width: 20px;
+    height: 18px;
+    margin-top: 20px;
+  }
+  
+  #carrinho{
+    position: absolute;
+    margin-top: 10px;
+    margin-right: 145px;
+    font-size: 10px;
+    width: 40px;
+    height: 40px;
+  }
+  
+  body {
+      display: flex;
+      min-height: 100vh;
+      flex-direction: column;
+    }
+  
+    main {
+      flex: 1 0 auto;
+    }
+  
+  main h1.h1{
+      color: #00d781;
+      font-family: 'Rubik', sans-serif;
+      text-align: center;
+      font-size: 50px;
+      position: relative;
+    } 
+  
+    img#h1img{
+      width: 120px;
+    }
+  
+  main img#check{
+    position: relative;
+    margin-bottom: 800px;
+    width: 160px;
+  }
+  
+  div#org{
+    align-items: center;
+    margin: 100px;
+    justify-content: space-between;
+  }
+  
+  #parágrafo{
+    font-size: 16px;
+    text-align: center;
+    align-items: center;
+    font-family: 'Rubik', sans-serif;
+    margin-bottom: 168px;
+  }
+  
+  #text{
+    color: #99a5ff;
+  }
+  
+   .page-footer{
+    background-color: #99a5ff;
+    color: #f0f0f0;
+   }
+  
+  .copyright{
+    color: #f0f0f0;
+   }
+  
+   #instagrã{
+    margin-top: 14px;
+    font-size: 16px;
+    font-family: 'Rubik', sans-serif;
+    display: flex;
+  }
+  
+  #facebuk{
+    margin-top: 10px;
+    font-size: 16px;
+    font-family: 'Rubik', sans-serif;
+    display: flex;
+  }
+  
+  #e-mail{
+    margin-right: 9000px;
+    margin-top: 25px;
+    font-size: 16px;
+    font-family: 'Rubik', sans-serif;
+    display: flex;
+  }
+  
+  #telefone{
+    margin-right: 470px;
+    justify-content: space-between;
+    font-size: 16px;
+    font-family: 'Rubik', sans-serif;
+    display: flex;
+  }
+  
+  #boxfooter{
+    position: absolute;
+    background-color: #f0f0f0;
+    padding: 15px;
+    border-radius: 5px;
+    margin-left: 1300px;
+    width: 490px;
+    height: 125px;
+  }
+  
+  #loja{
+    color: #000000;
+    margin-left: 10px;
+    position: absolute;
+    margin-top: 20px;
+    font-size: 25px;
+    font-family: 'Rubik', sans-serif;
+    font-weight: bold;
+  }
+  
+  #linha{
+    margin-top: 15px;
+    margin-left: 210px;
+    position: absolute;
+    width: 2px;
+    height: 70px;
+    background: #99a5ff;
+  }
+  
+  #desc{
+    color: #000000;
+    margin-top: 10px;
+    margin-left: 250px;
+    font-size: 16px;
+    font-family: 'Rubik', sans-serif;
+  }
+
+  #danyvia{
+    font-family: 'Rubik', sans-serif;
+    margin-bottom: 100px;
+    margin-left: 250px;
+    text-align: left;
+    align-items: center;
+  }
+
+  #titulos{
+    font-weight: 500;
+    color: #99a5ff;
+    font-size: 45px;
+  }

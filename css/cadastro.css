@@ -1,0 +1,245 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+
+:root {
+    --color-light-50: #eaeaea;
+
+    --color-dark-50: #797984;
+    --color-dark-100: #312d37;
+    --color-dark-900: #000;
+
+    --color-blue-50: #fad1ff;
+    --color-blue-100: #c6ceff;
+    --color-blue-200: #c0e6ff;
+
+
+    --color-purple-10: #9c91ff;
+    
+    --color-gradient: linear-gradient(90deg, var(--color-blue-50), var(--color-blue-100), var(--color-blue-200));
+}
+
+* {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #fafafa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    height: 100vh;
+    margin: 0;
+    transition: background 0.2s linear;
+  }
+  
+  body.dark {
+    background: #292c35;
+  }
+    
+#ceu{
+    top:260px;
+    left: 400px;
+    position: absolute;
+    z-index: 1;
+}
+
+  #cegonha {
+    pointer-events: none;
+    top:250px;
+    left: 400px;
+    position: absolute;
+  }
+  
+  .checkbox {
+    opacity: 0;
+    position: absolute;
+  }
+  
+  .label {
+    background-color: #111;
+    border-radius: 50px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  
+    padding: 5px;
+    position: relative;
+    height: 26px;
+    width: 50px;
+    transform: scale(1.5);
+  
+  }
+  
+  
+  .label .ball {
+    background-color: #fff;
+    border-radius: 50%;
+    position: absolute;
+    top: 2px;
+    left: 3.4px;
+    height: 22px;
+    width: 22px;
+    transform: translateX(0px);
+    transition: transform 0.32s linear;
+  }
+  
+  .checkbox:checked + .label .ball {
+    transform: translateX(22px);
+  }
+  
+  .fa-moon {
+    color: var(--color-light-50);
+  }
+  
+  .fa-sun {
+    color: var(--color-light-50);
+  }
+
+#container {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--color-gradient);
+}
+
+#login_form {
+    position: absolute;
+    margin-left: 800px;
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    background-color: var(--color-light-50);
+    padding: 30px 40px;
+    border-radius: 8px;
+    gap: 30px;
+    box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.336);
+    animation: dark-to-light-background 0.3s ease-in-out;
+}
+
+#form_header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#form_header h1 {
+    font-size: 40px;
+    position: relative;
+}
+
+#form_header h1::before {
+    position: absolute;
+    content: '';
+    width: 40%;
+    height: 3px;
+    background-color: var(--color-purple-10);
+    bottom: 10px;
+    border-radius: 5px;
+}
+
+#chk {
+    font-size: 5px;
+    cursor: pointer;
+}
+
+#inputs {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.input-box>label {
+    font-size: 16px;
+    color: var(--color-dark-50);
+}
+
+.input-field {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 3px;
+    border-bottom: 1px solid var(--color-purple-10);
+    cursor: text;
+}
+
+.input-field i {
+    font-size: 18px;
+    cursor: text;
+    color: var(--color-dark-900);
+} 
+
+.input-field input {
+    border: none;
+    width: 260px;
+    background-color: transparent;
+    font-size: 15.9px;
+    padding: 0px 5px;
+}
+
+.input-field input:focus {
+    outline: none;
+}
+
+#login_button {
+    margin-top: 20px;
+    width: 500px;
+    border: none;
+    background: var(--color-gradient);
+    padding: 7px;
+    border-radius: 3px;
+    color: var(--color-dark-100);
+    font-weight: bold;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+#login_button:hover {
+    transform: scale(1.05);
+}
+
+.dark#login_form {
+    color: var(--color-light-50);
+    background-color: var(--color-dark-100);
+    animation: light-to-dark-background 0.3s ease-in-out;
+}
+
+.dark#login_form .input-field input,
+.dark#login_form .input-field i {
+    color: var(--color-light-50);
+}
+
+@media screen and (max-width: 1200px) {
+    #cegonha {
+        display: none;
+    }
+    #login_form{
+            width: 450px;
+    }
+}
+
+@keyframes dark-to-light-background {
+    0% {
+        background-color:var(--color-dark-100);
+    }
+    100.0% {
+        background-color:var(--color-light-50);
+    }
+}
+
+@keyframes light-to-dark-background {
+    0% {
+        background-color:var(--color-light-50);
+    }
+    100.0% {
+        background-color:var(--color-dark-100); 
+    }
+}

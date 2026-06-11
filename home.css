@@ -1,0 +1,233 @@
+*{
+  scroll-behavior: smooth;
+  padding: 0px;
+  margin: 0;
+}
+
+.navbar{
+  background-color: #99a5ff;
+  height: 120px;
+  position: relative;
+}
+
+.logo{
+  margin-top: 5px;
+  right: 50px;
+  height: 112px;
+  width: 112px;
+  background-color: transparent;
+  position: relative;
+  margin-top: 4px;
+  display: block;
+}
+
+#search{
+    width: 100px;
+    font-family: 'Rubik', sans-serif;
+    border-radius: 5px;
+}
+
+a img#menu-desk{
+    display: inline;
+}
+
+#carrin{
+  z-index: 1;
+  position: absolute;
+  margin-top: 25px;
+  margin-left: 1180px;
+  background-color: #f0f0f0;
+  padding: 5px;
+  width: 200px;
+  height: 70px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: right;
+}
+
+.carrin{
+  color: #99a5ff;
+  margin-top: 27px;
+  z-index: 1;
+  font-size: 22px; 
+  font-family: 'Rubik', sans-serif;
+  position: absolute;
+  margin-left: 592px;
+}
+
+#seta{
+  position: relative;
+  margin-right: 4px;
+  width: 20px;
+  height: 18px;
+  margin-top: 20px;
+}
+
+#carrinho{
+  position: absolute;
+  margin-top: 10px;
+  margin-right: 145px;
+  font-size: 10px;
+  width: 40px;
+  height: 40px;
+}
+
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+
+  main {
+    flex: 1 0 auto;
+  }
+
+  h1#confira{
+    color: #99a5ff;
+    font-family: 'Rubik', sans-serif;
+    text-align: center;
+    font-size: 50px;
+    position: relative;
+  }
+  
+div#org{
+  font-family: 'Rubik', sans-serif;
+  align-items: center;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+}
+
+div#org2{
+  font-family: 'Rubik', sans-serif;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#orgimg{
+  position: relative;
+  align-items: center;
+}
+
+#produto2{
+  border-radius: 10px;
+  margin-left: 50px;
+}
+
+#borda{
+  border: 1px solid #99a5ff; 
+  width: auto; 
+  border-radius: 10px;
+}
+
+#preços{
+  font-family: 'Rubik', sans-serif;
+}
+
+#text{
+  color: #99a5ff;
+}
+
+ .page-footer{
+  background-color: #99a5ff;
+  color: #f0f0f0;
+ }
+
+.copyright{
+  color: #f0f0f0;
+ }
+
+.bnt {
+  border-radius: 1000px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  width: 50px;
+  height: 50px;
+  background-color: #000000;
+  text-decoration: none;
+}
+.bnt::after {
+  margin-bottom: 5px;
+  content: "↑";
+  font-size: 32px;
+  font-weight: bold;
+  color: #99a5ff;
+  transition: margin-top 250ms;
+}
+.bnt:hover::after {
+  margin-top:-5px;
+}
+
+#instagrã{
+  margin-top: 14px;
+  font-size: 15px;
+  font-family: 'Rubik', sans-serif;
+  display: flex;
+}
+
+#facebuk{
+  margin-top: 10px;
+  font-size: 15px;
+  font-family: 'Rubik', sans-serif;
+  display: flex;
+}
+
+#e-mail{
+  margin-right: 9000px;
+  margin-top: 25px;
+  font-size: 15px;
+  font-family: 'Rubik', sans-serif;
+  display: flex;
+}
+
+#telefone{
+  margin-right: 480px;
+  justify-content: space-between;
+  margin-top: 25px;
+  font-size: 15px;
+  font-family: 'Rubik', sans-serif;
+  display: flex;
+}
+
+#boxfooter{
+  position: absolute;
+  background-color: #f0f0f0;
+  padding: 15px;
+  border-radius: 5px;
+  margin-left: 1300px;
+  width: 490px;
+  height: 125px;
+}
+
+#loja{
+  color: #000000;
+  margin-left: 10px;
+  position: absolute;
+  margin-top: 20px;
+  font-size: 25px;
+  font-family: 'Rubik', sans-serif;
+  font-weight: bold;
+}
+
+#linha{
+  margin-top: 15px;
+  margin-left: 200px;
+  position: absolute;
+  width: 2px;
+  height: 70px;
+  background: #99a5ff;
+}
+
+#desc{
+  color: #000000;
+  margin-top: 10px;
+  margin-left: 250px;
+  font-size: 16px;
+  font-family: 'Rubik', sans-serif;
+}
