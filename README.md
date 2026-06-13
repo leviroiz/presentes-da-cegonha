@@ -4,6 +4,36 @@ Projeto de conclusão de curso desenvolvido em dupla, simulando um e-commerce co
 
 ---
 
+## 🖼️ Preview
+
+### Página inicial
+![Home](./assets/index.png)
+
+### Catálogo de produtos
+![Catálogo](./assets/listar-produtos.png)
+
+### Painel administrativo - Cadastro de produto
+![Cadastro de produto](./assets/cadastrar-produto.png)
+
+<details>
+<summary>📸 Ver mais screenshots (login, cadastro, dark mode)</summary>
+
+#### Login
+![Login](./assets/login-lightmode.png)
+
+#### Login - Dark Mode
+![Login Dark Mode](./assets/login-darkmode.png)
+
+#### Cadastro de cliente
+![Cadastro](./assets/register.png)
+
+#### Tela administrativa
+![Tela Admin](./assets/tela-admin.png)
+
+</details>
+
+---
+
 ## 🖥️ Sobre o projeto
 
 A **Presentes da Cegonha** é uma loja virtual de produtos para bebês e crianças, desenvolvida como projeto final do curso Técnico em Informática. O projeto contempla desde a interface do cliente até o painel administrativo, com integração a banco de dados MySQL e autenticação via Google.
