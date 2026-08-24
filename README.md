@@ -94,7 +94,7 @@ A análise completa está em [docs/SECURITY_REVIEW.md](./docs/SECURITY_REVIEW.md
 - HTML5, CSS3, JavaScript e SCSS
 - Materialize CSS e jQuery no front-end original
 - Docker e Docker Compose para ambiente reproduzível
-- GitHub Actions para lint e verificações de segurança
+- GitHub Actions para lint, verificações de segurança e testes de integração
 
 ## Estrutura principal
 
@@ -104,7 +104,7 @@ A análise completa está em [docs/SECURITY_REVIEW.md](./docs/SECURITY_REVIEW.md
 ├── includes/               # Autenticação, CSRF e helpers
 ├── database/migrations/    # Migração para o banco acadêmico
 ├── scripts/                # Criação de admin e verificação estática
-├── tests/                  # Smoke tests de segurança
+├── tests/                  # Testes de segurança e integração HTTP/MariaDB
 ├── css/, js/, img/         # Interface e assets do projeto
 ├── bd_cegonha.sql          # Esquema e catálogo fictício
 ├── docker-compose.yml      # Aplicação + MariaDB
@@ -153,10 +153,12 @@ php tests/security_smoke.php
 
 Essas verificações também são executadas no GitHub Actions a cada `push` e `pull request`.
 
+O workflow ainda sobe um MariaDB isolado, inicializa o esquema e testa por HTTP os fluxos de cadastro, login, autorização administrativa, CRUD de produtos e pedido transacional. Os dados criados pela suíte são fictícios e removidos ao final da execução.
+
 ## Histórico preservado
 
 - `v1-academico-2023`: código original do projeto acadêmico.
-- `refactor/portfolio`: modernização de segurança e organização.
+- `main`: versão modernizada, revisada e validada automaticamente.
 
 Essa separação permite comparar a evolução técnica sem apagar o contexto em que o projeto foi criado.
 
@@ -171,7 +173,7 @@ Essa separação permite comparar a evolução técnica sem apagar o contexto em
 ## Limitações e próximos passos
 
 - Transformar o carrinho visual em um fluxo persistente de múltiplos itens.
-- Adicionar testes de integração com banco isolado.
+- Expandir a cobertura automatizada para recuperação de senha e concorrência de estoque.
 - Implementar recuperação de senha e proteção contra tentativas repetidas.
 - Aplicar HTTPS e cabeçalhos de segurança no ambiente publicado.
 - Revisar privacidade, retenção de dados e requisitos da LGPD antes de qualquer uso real.
