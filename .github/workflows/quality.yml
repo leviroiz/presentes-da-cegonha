@@ -27,3 +27,71 @@ jobs:
         run: |
           php scripts/security_check.php
           php tests/security_smoke.php
+
+  php-integration:
+    runs-on: ubuntu-latest
+    env:
+      APP_ENV: testing
+      APP_DEBUG: "false"
+      APP_URL: http://127.0.0.1:8080
+      DB_HOST: 127.0.0.1
+      DB_PORT: 3306
+      DB_NAME: bd_cegonha
+      DB_USER: cegonha
+      DB_PASSWORD: integration_password
+      DB_ADMIN_USER: root
+      DB_ADMIN_PASSWORD: root_integration_password
+      SESSION_SECURE: "false"
+    services:
+      mariadb:
+        image: mariadb:11.4
+        env:
+          MARIADB_DATABASE: bd_cegonha
+          MARIADB_USER: cegonha
+          MARIADB_PASSWORD: integration_password
+          MARIADB_ROOT_PASSWORD: root_integration_password
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="healthcheck.sh --connect --innodb_initialized"
+          --health-interval=5s
+          --health-timeout=5s
+          --health-retries=20
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configure PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          extensions: curl, mysqli
+          coverage: none
+
+      - name: Initialize test database
+        run: php tests/bootstrap_database.php
+
+      - name: Start test server
+        run: |
+          php -S 127.0.0.1:8080 -t . > /tmp/cegonha-php.log 2>&1 &
+          echo $! > /tmp/cegonha-php.pid
+          for attempt in {1..20}; do
+            if curl --fail --silent --show-error "$APP_URL/login.php" > /dev/null; then
+              exit 0
+            fi
+            sleep 1
+          done
+          cat /tmp/cegonha-php.log
+          exit 1
+
+      - name: HTTP and MariaDB integration tests
+        run: php tests/integration_http.php
+
+      - name: Show server log on failure
+        if: failure()
+        run: cat /tmp/cegonha-php.log
+
+      - name: Stop test server
+        if: always()
+        run: kill "$(cat /tmp/cegonha-php.pid)" 2>/dev/null || true
