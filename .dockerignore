@@ -1,0 +1,6 @@
+.git
+.github
+.env
+work
+vendor
+*.log

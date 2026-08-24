@@ -1,3 +1,7 @@
+<?php
+require_once __DIR__ . '/config/bootstrap.php';
+$flash = pull_flash();
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -23,6 +27,7 @@
 
         <!-- FUNDO LOGIN -->
         <form id="login_form" action="cadastro_clientebd.php" method="POST">
+            <?php echo csrf_field(); ?>
 
             <!-- FORM HEADER -->
             <div id="form_header">
@@ -43,6 +48,10 @@
     </div>
             </div>
 
+            <?php if ($flash): ?>
+                <p role="alert" style="color: #a52424;"><?php echo e($flash['message']); ?></p>
+            <?php endif; ?>
+
             <!-- INPUTS -->
              <div class="nometel">
                 
@@ -51,7 +60,7 @@
                     <label for="nome">
                         Nome
                         <div id="name" class="input-field">
-                            <input name="nome" type="text" id="nome" class="validate">
+                            <input name="nome" type="text" id="nome" class="validate" required maxlength="100" autocomplete="name">
                             <i class=""></i>
                         </div>
                     </label>
@@ -61,7 +70,7 @@
                     <label for="nome">
                         Senha
                         <div id="senha" class="input-field">
-                            <input name="senha" type="text" id="nome" class="validate">
+                            <input name="senha" type="password" id="senha_cliente" class="validate" required minlength="10" autocomplete="new-password">
                             <i class=""></i>
                         </div>
                     </label>
@@ -72,7 +81,7 @@
                     <label for="nome">
                         Telefone
                         <div id="tel" class="input-field">
-                            <input name="telefone" type="text" id="telefone1" class="validate" oninput="this.value = this.value.replace(/[^0-9.-]/g, '')" maxlength="14">
+                            <input name="telefone" type="tel" id="telefone1" class="validate" required oninput="this.value = this.value.replace(/[^0-9()-]/g, '')" maxlength="15" autocomplete="tel">
                             <i class=""></i>
                         </div>
                     </label>
@@ -87,7 +96,7 @@
                     <label for="nome">
                         E-mail
                         <div id="email" class="input-field">
-                            <input name="email" type="email" id="email" class="validate">
+                            <input name="email" type="email" id="email" class="validate" required maxlength="150" autocomplete="email">
                             <i class=""></i>
                         </div>
                     </label>
@@ -97,7 +106,7 @@
                     <label for="nome">
                         Data de Nascimento
                         <div id="data" class="input-field">
-                            <input name="data_nascimento" type="date" id="data_nascimento" class="validate">
+                            <input name="data_nascimento" type="date" id="data_nascimento" class="validate" required autocomplete="bday">
                             <i class=""></i>
                         </div>
                     </label>
@@ -111,7 +120,7 @@
                     <label for="nome">
                         CPF
                         <div id="cpf" class="input-field">
-                            <input type="text" id="cpf1" name="cpf" class="validate" oninput="this.value = this.value.replace(/[^0-9.-]/g, '')" maxlength="14">
+                            <input type="text" id="cpf1" name="cpf" class="validate" required inputmode="numeric" oninput="this.value = this.value.replace(/[^0-9.-]/g, '')" maxlength="14">
                             <i class=""></i>
                         </div>
                     </label>
@@ -121,7 +130,7 @@
                     <label for="nome">
                         CEP
                         <div id="cep" class="input-field">
-                            <input name="CEP" type="text" id="CEP" class="validate">
+                            <input name="CEP" type="text" id="CEP" class="validate" required inputmode="numeric" maxlength="9" autocomplete="postal-code">
                             <i class=""></i>
                         </div>
                     </label>
@@ -134,7 +143,7 @@
                 <label for="nome">
                         Cidade
                         <div id="cpf" class="input-field">
-                            <input name="cidade" type="text" id="nome" class="validate">
+                            <input name="cidade" type="text" id="cidade" class="validate" required maxlength="100" autocomplete="address-level2">
                             <i class=""></i>
                         </div>
                     </label>
@@ -144,7 +153,7 @@
                     <label for="nome">
                         Bairro
                         <div id="bairro" class="input-field">
-                            <input name="bairro" type="text" id="bairro" class="validate">
+                            <input name="bairro" type="text" id="bairro" class="validate" required maxlength="100" autocomplete="address-level3">
                             <i class=""></i>
                         </div>
                     </label>
@@ -154,7 +163,7 @@
                     <label for="nome">
                         Rua
                         <div id="rua" class="input-field">
-                            <input name="rua" type="text" id="rua" class="validate">
+                            <input name="rua" type="text" id="rua" class="validate" required maxlength="150" autocomplete="street-address">
                             <i class=""></i>
                         </div>
                     </label>
@@ -166,7 +175,7 @@
                     <label for="nome">
                         nº Residência
                         <div id="home" class="input-field">
-                            <input name="n_residencia" type="text" id="nº_residência" class="validate">
+                            <input name="n_residencia" type="text" id="numero_residencia" class="validate" required maxlength="20">
                             <i class=""></i>
                         </div>
                     </label>
@@ -176,7 +185,7 @@
                     <label>
                         Gênero
                         <div id="sex" class="input-fieldrad">
-                      <input class="chk" name="sexo" type="radio" value="Masculino" />
+                      <input class="chk" name="sexo" type="radio" value="Masculino" required />
                       <span style="margin-right: 15px;">Masculino</span>
                   
 
@@ -218,20 +227,7 @@
     }
   });
   
-  const inputt = document.querySelector('#telefone1')
-  inputt.addEventListener('keypress', ()=> {
-    let inputlength = inputt.value.length
-
-    console.log(inputtlength)
-    if(inputlength === 3 || inputlength === 7){
-      input.value += '.'
-    }else if(inputlength === 11){
-      input.value += '-'
-    }
-  });   
-
 </script>
 <script src="./script.js"></script>
 </body>
 </html>
-  </php>

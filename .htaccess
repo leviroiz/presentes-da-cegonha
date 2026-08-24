@@ -1,0 +1,9 @@
+Options -Indexes
+
+<IfModule mod_alias.c>
+    RedirectMatch 404 ^/(?:config|includes|database|scripts|tests)(?:/|$)
+</IfModule>
+
+<FilesMatch "^(?:\.env(?:\..*)?|Dockerfile|docker-compose\.yml|bd_cegonha\.sql)$">
+    Require all denied
+</FilesMatch>

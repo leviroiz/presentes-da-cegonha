@@ -1,127 +1,62 @@
 <?php
-    require_once 'conexao.php';
 
-    session_start();
+declare(strict_types=1);
 
-    if(!isset ($_SESSION['id_admin']) ) {
-        echo '
-            <script type = "text/javascript">
-            alert( "Você precisa fazer o login para acessar esta página!");
-            window.location = "../index.php"
-            </script>
-            ';
-    }
+require_once __DIR__ . '/config/bootstrap.php';
+
+require_admin();
+require_once __DIR__ . '/config/database.php';
+
+$productId = get_positive_int('id');
+$statement = db()->prepare(
+    'SELECT id_produto, nome, preco, estoque FROM tb_produtos WHERE id_produto = ?'
+);
+$statement->bind_param('i', $productId);
+$statement->execute();
+$product = $statement->get_result()->fetch_assoc();
+
+if (!$product) {
+    http_response_code(404);
+    exit('Produto não encontrado.');
+}
 ?>
 <!DOCTYPE html>
-  <html lang="pt-br">
-    <head>
-      <!--Import Google Icon Font-->
-      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-      <!--Import materialize.css-->
-      <link type="text/css" rel="stylesheet" href="../css/materialize.min.css"  media="screen,projection"/>
-
-      <link rel="stylesheet" href="alterar_produto.css">
-      <!--Let browser know website is optimized for mobile-->
-      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-      <meta charset="UTF-8">
-      <title>Alterar</title>
-    </head>
-    <body>
-
-    <!-- LOGO -->
-    <main id="container">
-        <div class="img"><img id="cegonha" src="./img/logosite.png"></div>
-
-        <!-- FUNDO LOGIN -->
-        <form id="login_form" action="alterar_produtobd.php" method="POST">
-        <?php 
-            $idAlt = $_GET['id'];
-            $sql = "SELECT *FROM tb_produtos WHERE id_produto = '$idAlt';";
-            $query = mysqli_query($conn , $sql);
-                if($query){
-                    while($row = mysqli_fetch_array($query , MYSQLI_ASSOC)){
-        
-            ?>
-
-            <div id="form_header">
-                <h1 style="font-size: 50px;">Alterar Produto</h1>
-                <!--i id="mode_icon" class="luazinha"><img src="./icons/luazinha.png"></i!-->
-                <!--i id="mode_icon" class="material-icons">brightness_2</i!-->
-                
-                <!-- ÍCONES -->
-                <div class="wrapper">
-            <div class="toggle">
-                <input class="toggle-input" type="checkbox" id="mode_chk"/>
-            <div class="toggle-bg"></div>
-            <div class="toggle-switch">
-            <div class="toggle-switch-figure"></div>
-            <div class="toggle-switch-figureAlt"></div>
-            </div>  
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/admin.css">
+    <title>Editar produto | Administração</title>
+</head>
+<body class="admin-page">
+<main class="admin-shell">
+    <header class="admin-header">
+        <div>
+            <h1>Editar produto</h1>
+            <p>Atualize os dados operacionais do catálogo.</p>
         </div>
-    </div>
+        <a class="admin-button secondary" href="listar_produtos.php">Cancelar</a>
+    </header>
+
+    <section class="admin-card">
+        <form class="admin-form" action="alterar_produtobd.php" method="post">
+            <?php echo csrf_field(); ?>
+            <input type="hidden" name="id_produto" value="<?php echo e($product['id_produto']); ?>">
+
+            <label class="full">Nome
+                <input type="text" name="nome" required maxlength="100" value="<?php echo e($product['nome']); ?>">
+            </label>
+            <label>Preço
+                <input type="number" name="preco" required min="0.01" step="0.01" value="<?php echo e($product['preco']); ?>">
+            </label>
+            <label>Estoque
+                <input type="number" name="estoque" required min="0" step="1" value="<?php echo e($product['estoque']); ?>">
+            </label>
+            <div class="full">
+                <button class="admin-button" type="submit">Salvar alterações</button>
             </div>
-            <!-- INPUTS -->
-            <div class="nometel">
-                
-                <!-- Nome -->
-                
-                <label for="nome">
-                        Nome
-                        <div id="name" class="input-field">
-                        <input type="text" name="nome" id="nome" value="<?php echo $row['nome'];?>"> 
-                            <i class=""></i>
-                        </div>
-                    </label>
-
-                    <!-- Telefone -->
-                
-                    <label for="ID">
-                        Id
-                        <div id="tel" class="input-field">
-                        <input type="text" name="id_produto" id="id_produto" readonly="true" value="<?php echo $idAlt;?>">
-                            <i class=""></i>
-                        </div>
-                    </label>
-                </div>
-                </div>
-                </div>
-
-                <div class="emaildate">
-
-                <!-- E-mail -->
-
-                    <label for="nome">
-                        Preço
-                        <div id="email" class="input-field">
-                        <input type="number" name="preco" id="preco" value="<?php echo $row['preco'];?>">
-                            <i class=""></i>
-                        </div>
-                    </label>
-
-                    <!-- Data de Nascimento -->
-
-                    <label for="nome">
-                        Estoque
-                        <div id="data" class="input-field">
-                        <input type="number" name="estoque" id="estoque" value="<?php echo $row['estoque'];?>">
-                            <i class=""></i>
-                        </div>
-                    </label>
-                </div>
-                </div>
-                </div>
-
-                <button type="submit" id="login_button" value="Enviar">
-                Enviar
-            </button>
-            <?php 
-            }
-        }
-        ?>
-         </form>
-      <!--JavaScript at end of body for optimized loading-->
-      <script type="text/javascript" src="../js/materialize.min.js"></script>
-      <script src="./script.js"></script>
-      
-    </body>
-  </html>
+        </form>
+    </section>
+</main>
+</body>
+</html>

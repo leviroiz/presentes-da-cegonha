@@ -1,104 +1,80 @@
 <?php
-    require_once 'conexao.php';
 
-    session_start();
+declare(strict_types=1);
 
-    if(!isset ($_SESSION['id_admin']) ) {
-        echo '
-            <script type = "text/javascript">
-            alert( "Você precisa fazer o login para acessar esta página!");
-            window.location = "../index.php"
-            </script>
-            ';
-    }
+require_once __DIR__ . '/config/bootstrap.php';
+
+require_admin();
+require_once __DIR__ . '/config/database.php';
+
+$customers = db()->query(
+    'SELECT id_cliente, data_cadastro, nome, cpf, email, telefone, cidade
+     FROM tb_cliente ORDER BY id_cliente DESC'
+)->fetch_all(MYSQLI_ASSOC);
+$flash = pull_flash();
 ?>
 <!DOCTYPE html>
-  <html lang="pt-br">
-    <head>
-      <!--Import Google Icon Font-->
-      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-      <!--Import materialize.css-->
-      <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
-      <link rel="stylesheet" href="listar_user.css">
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/admin.css">
+    <title>Clientes | Administração</title>
+</head>
+<body class="admin-page">
+<main class="admin-shell">
+    <header class="admin-header">
+        <div>
+            <h1>Clientes</h1>
+            <p>A senha nunca é exibida; apenas o hash é armazenado.</p>
+        </div>
+        <a class="admin-button secondary" href="tela_admin.php">Voltar ao painel</a>
+    </header>
 
-      <!--Let browser know website is optimized for mobile-->
-      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-      <meta charset="UTF-8">
-      <title>Usuários</title>
-    </head>
-    <body>
-        <h1 id="agaum">Lista de Usuários</h1>
+    <?php if ($flash): ?>
+        <p class="admin-flash <?php echo $flash['type'] === 'error' ? 'error' : ''; ?>" role="alert">
+            <?php echo e($flash['message']); ?>
+        </p>
+    <?php endif; ?>
 
-        <div id="tabela">
-        <table border="1">
+    <section class="admin-card" aria-label="Lista de clientes">
+        <table class="admin-table">
             <thead>
-                <th>ID Usuário</th>
-                <th>Data de Cadastro</th>
-                <th>Nome</th>
-                <th>CPF</th>
-                <th>Data de Nascimento</th>
-                <th>Email</th>
-                <th>Senha</th>
-                <th>Telefone</th>
-                <th>Bairro</th>
-                <th>Cidade</th>
-                <th>Rua</th>
-                <th>N° Residência</th>
-                <th>CEP</th>
-                <th>Sexo</th>
-                <th>Alterar</th>
-                <th>Deletar</th>
-                
-            </thead>
-            </div>
-                <?php $sql = "SELECT *FROM tb_cliente; ";
-    $query = mysqli_query($conn , $sql);
-        if($query){
-            while($row = mysqli_fetch_array($query , MYSQLI_ASSOC)){?>
-            <tbody>
                 <tr>
-                    <td><?php echo $row['id_cliente'];?></td>
-
-                    <td><?php echo $row['data_cadastro'];?></td>
-
-                    <td><?php echo $row['nome'];?></td>
-
-                    <td><?php echo $row['cpf'];?></td>
-
-                    <td><?php echo $row['data_nascimento'];?></td>
-
-                    <td><?php echo $row['email'];?></td>
-
-                    <td><?php echo $row['senha'];?></td>
-
-                    <td><?php echo $row['telefone'];?></td>
-
-                    <td><?php echo $row['bairro'];?></td>
-
-                    <td><?php echo $row['cidade'];?></td>
-
-                    <td><?php echo $row['rua'];?></td>
-
-                    <td><?php echo $row['n_residencia'];?></td>
-
-                    <td><?php echo $row['CEP'];?></td>
-
-                    <td><?php echo $row['sexo'];?></td>
-
-                    <td><button><a href="alterar_cliente.php?id=<?php echo $row['id_cliente']?>">Alterar</a></button></td>
-
-                    <td><button><a onclick="return confirm('Deseja Realmente deletar o usário?')" href="deletar_user.php?id=<?php echo $row['id_cliente'];?>">Deletar</a></button></td>
-
-
-                    
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>E-mail</th>
+                    <th>Telefone</th>
+                    <th>Cidade</th>
+                    <th>Cadastro</th>
+                    <th>Ações</th>
                 </tr>
-                    <?php 
-                    }
-                }?>
+            </thead>
+            <tbody>
+            <?php foreach ($customers as $customer): ?>
+                <tr>
+                    <td><?php echo e($customer['id_cliente']); ?></td>
+                    <td><?php echo e($customer['nome']); ?></td>
+                    <td><?php echo e($customer['email']); ?></td>
+                    <td><?php echo e($customer['telefone']); ?></td>
+                    <td><?php echo e($customer['cidade']); ?></td>
+                    <td><?php echo e(date('d/m/Y', strtotime($customer['data_cadastro']))); ?></td>
+                    <td>
+                        <a class="admin-button secondary" href="alterar_cliente.php?id=<?php echo e($customer['id_cliente']); ?>">Editar</a>
+                        <form action="deletar_user.php" method="post" onsubmit="return confirm('Deseja remover este cliente?');">
+                            <?php echo csrf_field(); ?>
+                            <input type="hidden" name="id_cliente" value="<?php echo e($customer['id_cliente']); ?>">
+                            <button class="admin-button danger" type="submit">Remover</button>
+                        </form>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+            <?php if (!$customers): ?>
+                <tr><td colspan="7">Nenhum cliente cadastrado.</td></tr>
+            <?php endif; ?>
             </tbody>
         </table>
-        
-      <!--JavaScript at end of body for optimized loading-->
-      <script type="text/javascript" src="js/materialize.min.js"></script>
-    </body>
-  </html>
+    </section>
+</main>
+</body>
+</html>

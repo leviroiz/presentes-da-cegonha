@@ -1,3 +1,9 @@
+<?php
+require_once __DIR__ . '/config/bootstrap.php';
+$flash = pull_flash();
+$requestedNext = isset($_GET['next']) && is_string($_GET['next']) ? $_GET['next'] : '';
+$next = safe_next_path($requestedNext, 'home.php');
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -6,8 +12,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script src="https://accounts.google.com/gsi/client" async defer></script>
-    <script src="https://unpkg.com/jwt-decode/build/jwt-decode.js"></script>
     <link rel="stylesheet" href="./css/login.css">
     
     <title>Login</title>
@@ -17,6 +21,8 @@
         <div class="img"><img id="cegonha" src="./img/logosite.png"></div>
 
         <form id="login_form" action="validar_user.php" method="POST">
+            <?php echo csrf_field(); ?>
+            <input type="hidden" name="next" value="<?php echo e($next); ?>">
             <!-- FORM HEADER -->
             <div id="form_header">
                 <h1>Login</h1>
@@ -32,8 +38,13 @@
             </div>  
         </div>
     </div>
-        </label>
             </div>
+
+            <?php if ($flash): ?>
+                <p role="alert" style="color: <?php echo $flash['type'] === 'success' ? '#176b32' : '#a52424'; ?>;">
+                    <?php echo e($flash['message']); ?>
+                </p>
+            <?php endif; ?>
 
             <!-- INPUTS -->
             <div id="inputs">
@@ -54,7 +65,7 @@
                     <label for="email">
                         E-mail
                         <div class="input-field">
-                            <input type="text" id="email" name="email">
+                            <input type="email" id="email" name="email" required autocomplete="email" maxlength="150">
                             <i class="fa-solid fa-envelope"></i>
                         </div>
                     </label>
@@ -65,7 +76,7 @@
                     <label for="password">
                         Senha
                         <div class="input-field">
-                            <input type="password" id="password" name="senha">
+                            <input type="password" id="password" name="senha" required autocomplete="current-password">
                             <i class="fa-solid fa-key"></i>
                         </div>
                     </label>
@@ -90,33 +101,7 @@
         </form>
     </main>
 
-    <!-- JAVASCRIPT -->
-    <script>
-        function handleCredentialResponse(response) {
-          const data = jwt_decode(response.credential)
-
-        fullName.textContent = data.name
-        sub.textContent = data.sub
-        given_name.textContent = data.given_name
-        family_name.textContent = data.family_name
-        email.textContent = data.email
-        verifiedEmail.textContent = data.email_verified
-        picture.setAttribute("src", data.picture)
-        }
-
-        window.onload = function () {
-
-          google.accounts.id.initialize({
-            client_id: "291212682657-4nb310pjdspo5kf8v2l7phnbfseh76md.apps.googleusercontent.com",
-            callback: handleCredentialResponse
-          });
-          google.accounts.id.renderButton(
-            document.getElementById("buttonDiv"),
-            { theme: "outline", size: "large" }  // customization attributes
-          );
-          google.accounts.id.prompt(); // also display the One Tap dialog
-        }
-    </script>
+    <!-- Login social acadêmico removido até existir validação server-side adequada. -->
     <script src="https://kit.fontawesome.com/998c60ef77.js" crossorigin="anonymous"></script>
     <script src="./js/script.js"></script>
 </body>

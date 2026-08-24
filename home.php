@@ -1,20 +1,11 @@
 <?php
-    require_once 'conexao.php';
-
-    session_start();
-
-    if(!isset ($_SESSION['id_cliente']) ) {
-        echo '
-            <script type = "text/javascript">
-            alert( "Você precisa fazer o login para acessar esta página!");
-            window.location = "../index.php"
-            </script>
-            ';
-    }
+require_once __DIR__ . '/config/bootstrap.php';
+require_customer();
+$flash = pull_flash();
 ?>
 
-<!DOCTYPE php>
-  <php lang="pt-br">
+<!DOCTYPE html>
+  <html lang="pt-br">
     <head>
       <meta charset="UTF-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -47,7 +38,7 @@
     <!-- NAVBAR -->
     <nav class="navbar" style="position: absolute;">
 
-      <a href="./tela_pagamento.php" data-target="slide-out" class="sidenav-trigger" >
+      <a href="#" data-target="slide-out" class="sidenav-trigger" >
         <i class="material-icons">menu</i>
       </a>
      
@@ -95,6 +86,12 @@
     </nav>
   </header>
     
+    <?php if ($flash): ?>
+      <p role="alert" style="margin: 130px auto 0; width: min(900px, 90%); color: #a52424;">
+        <?php echo e($flash['message']); ?>
+      </p>
+    <?php endif; ?>
+
     <!-- Carousel -->
     <div class="carousel carousel-slider" style="margin-top: 120px">
       <a class="carousel-item" ><img src="./img/babyBanner.png" height="750px"></a>
@@ -129,7 +126,7 @@
         </div>
 
         <div class="card-content">
-          <a href="./tela_pagamento.php" class="btn indigo lighten-3">Comprar</a>
+          <a href="./tela_pagamento.php?produto_id=1" class="btn indigo lighten-3">Comprar</a>
         </div>
       </div>
     </div>
@@ -148,7 +145,7 @@
         </div>
 
         <div class="card-content">
-          <a href="./tela_pagamento.php" class="btn indigo lighten-3">Comprar</a>
+          <a href="./tela_pagamento.php?produto_id=2" class="btn indigo lighten-3">Comprar</a>
         </div>
       </div>
     </div>  
@@ -166,7 +163,7 @@
         </div>
 
         <div class="card-content">
-          <a href="./tela_pagamento.php" class="btn indigo lighten-3">Comprar</a>
+          <a href="./tela_pagamento.php?produto_id=3" class="btn indigo lighten-3">Comprar</a>
         </div>
       </div>
     </div>
@@ -184,7 +181,7 @@
         </div>
 
         <div class="card-content">
-          <a href="./tela_pagamento.php" class="btn indigo lighten-3">Comprar</a>
+          <a href="./tela_pagamento.php?produto_id=4" class="btn indigo lighten-3">Comprar</a>
         </div>
       </div>
     </div>
@@ -205,7 +202,7 @@
         </div>
 
         <div class="card-content">
-          <a href="./tela_pagamento.php" class="btn indigo lighten-3">Comprar</a>
+          <a href="./tela_pagamento.php?produto_id=5" class="btn indigo lighten-3">Comprar</a>
         </div>
       </div>
     </div>
@@ -223,7 +220,7 @@
         </div>
 
         <div class="card-content">
-          <a href="./tela_pagamento.php" class="btn indigo lighten-3">Comprar</a>
+          <a href="./tela_pagamento.php?produto_id=6" class="btn indigo lighten-3">Comprar</a>
         </div>
       </div>
     </div>
@@ -241,7 +238,7 @@
         </div>
 
         <div class="card-content">
-          <a href="./tela_pagamento.php" class="btn indigo lighten-3">Comprar</a>
+          <a href="./tela_pagamento.php?produto_id=7" class="btn indigo lighten-3">Comprar</a>
         </div>
       </div>
     </div>
@@ -259,7 +256,7 @@
         </div>
 
         <div class="card-content">
-          <a href="./tela_pagamento.php" class="btn indigo lighten-3">Comprar</a>
+          <a href="./tela_pagamento.php?produto_id=8" class="btn indigo lighten-3">Comprar</a>
         </div>
       </div>
     </div>
@@ -280,7 +277,7 @@
         </div>
 
         <div class="card-content">
-          <a href="./tela_pagamento.php" class="btn indigo lighten-3">Comprar</a>
+          <a href="./tela_pagamento.php?produto_id=9" class="btn indigo lighten-3">Comprar</a>
         </div>
       </div>
     </div>
@@ -298,7 +295,7 @@
         </div>
 
         <div class="card-content">
-          <a href="./tela_pagamento.php" class="btn indigo lighten-3">Comprar</a>
+          <a href="./tela_pagamento.php?produto_id=10" class="btn indigo lighten-3">Comprar</a>
         </div>
       </div>
     </div>
@@ -316,7 +313,7 @@
         </div>
 
         <div class="card-content">
-          <a href="./tela_pagamento.php" class="btn indigo lighten-3">Comprar</a>
+          <a href="./tela_pagamento.php?produto_id=11" class="btn indigo lighten-3">Comprar</a>
         </div>
       </div>
     </div>
@@ -334,7 +331,7 @@
         </div>
 
         <div class="card-content">
-          <a href="./tela_pagamento.php" class="btn indigo lighten-3">Comprar</a>
+          <a href="./tela_pagamento.php?produto_id=12" class="btn indigo lighten-3">Comprar</a>
         </div>
       </div>
     </div>
@@ -368,12 +365,12 @@
             <br>
             <div id="e-mail">
             <p style="margin-top: 0px;" class="dark-text text-lighten-4"><img src="./icons/email.png" width="30px"></p>
-            <p style="margin-top: 5px; margin-left: 5px;">presentesdacegonha@gmail.com</p>
+            <p style="margin-top: 5px; margin-left: 5px;">contato@exemplo.com</p>
             </div>
 
             <div id="telefone">
             <p style="margin-top: 0px;" class="dark-text text-lighten-4"><img src="./icons/telefone.png" width="30px"></p>
-            <p style="margin-top: 5px; margin-left: 5px;">(88) 99905-9946</p>
+            <p style="margin-top: 5px; margin-left: 5px;">(00) 00000-0000</p>
             </div>
         </div>
       </div>
@@ -394,4 +391,4 @@
 
   <script src="./js/cegonha.js"></script>
 </body>
-  </php>
+  </html>

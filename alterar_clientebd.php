@@ -1,23 +1,57 @@
-<?php 
-require_once 'conexao.php';
-$id_cliente = htmlspecialchars($_POST['id_cliente']);
-$nome = htmlspecialchars($_POST['nome']);
-$email = htmlspecialchars($_POST['email']);
-$senha = htmlspecialchars($_POST['senha']);
-$telefone = htmlspecialchars($_POST['telefone']);
-$bairro = htmlspecialchars($_POST['bairro']);
-$cidade = htmlspecialchars($_POST['cidade']);
-$rua = htmlspecialchars($_POST['rua']);
-$n_residencia = htmlspecialchars($_POST['n_residencia']);
+<?php
 
-$sql = "UPDATE tb_cliente SET nome = '$nome' , email = '$email' , senha = '$senha' , telefone = '$telefone' , 
-bairro = '$bairro' , cidade = '$cidade' , rua = '$rua' , n_residencia = '$n_residencia' WHERE id_cliente = '$id_cliente';";
-$query = mysqli_query($conn , $sql);
+declare(strict_types=1);
 
-mysqli_close($conn);
+require_once __DIR__ . '/config/bootstrap.php';
 
-echo '<script type="text/javascript">';
-	echo 'window.location="listar_user.php"';
-	echo '</script>';
+require_admin();
+require_post();
+require_csrf();
+require_once __DIR__ . '/config/database.php';
 
-?>
+$customerId = post_positive_int('id_cliente');
+$name = post_string('nome');
+$email = filter_var(post_string('email'), FILTER_VALIDATE_EMAIL);
+$phone = only_digits(post_string('telefone'));
+$district = post_string('bairro');
+$city = post_string('cidade');
+$street = post_string('rua');
+$houseNumber = post_string('n_residencia');
+$postalCode = only_digits(post_string('CEP'));
+
+if ($customerId === 0 || $name === '' || $email === false || strlen($phone) < 10 || strlen($postalCode) !== 8
+    || $district === '' || $city === '' || $street === '' || $houseNumber === '') {
+    set_flash('error', 'Dados do cliente inválidos.');
+    redirect('listar_user.php');
+}
+
+$statement = db()->prepare(
+    'UPDATE tb_cliente
+     SET nome = ?, email = ?, telefone = ?, bairro = ?, cidade = ?, rua = ?, n_residencia = ?, CEP = ?
+     WHERE id_cliente = ?'
+);
+$statement->bind_param(
+    'ssssssssi',
+    $name,
+    $email,
+    $phone,
+    $district,
+    $city,
+    $street,
+    $houseNumber,
+    $postalCode,
+    $customerId
+);
+
+try {
+    $statement->execute();
+} catch (mysqli_sql_exception $exception) {
+    if ((int) $exception->getCode() === 1062) {
+        set_flash('error', 'Este e-mail já está em uso.');
+        redirect('listar_user.php');
+    }
+    throw $exception;
+}
+
+set_flash('success', 'Cliente atualizado com sucesso.');
+redirect('listar_user.php');

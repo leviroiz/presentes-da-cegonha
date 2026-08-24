@@ -1,3 +1,7 @@
+<?php
+require_once __DIR__ . '/config/bootstrap.php';
+$flash = pull_flash();
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -16,6 +20,7 @@
     <div class="img"><img id="cegonha" src="./img/logosite.png"></div>
 
         <form id="login_form" action="validar_admin.php" method="POST">
+            <?php echo csrf_field(); ?>
             <!-- FORM HEADER -->
             <div id="form_header">
                 <h1>Login Admin</h1>
@@ -36,6 +41,10 @@
             <!-- Outras Formas de Login -->
         
 
+            <?php if ($flash): ?>
+                <p role="alert" style="color: #a52424;"><?php echo e($flash['message']); ?></p>
+            <?php endif; ?>
+
             <!-- INPUTS -->
             <div id="inputs">
 
@@ -55,7 +64,7 @@
                     <label for="login">
                         Login
                         <div class="input-field">
-                            <input type="text" id="login" name="login">
+                            <input type="text" id="login" name="login" required autocomplete="username" maxlength="100">
                             <i class="fa-solid fa-envelope"></i>
                         </div>
                     </label>
@@ -66,7 +75,7 @@
                     <label for="password">
                         Senha
                         <div class="input-field">
-                            <input type="password" id="password" name="senha">
+                            <input type="password" id="password" name="senha" required autocomplete="current-password">
                             <i class="fa-solid fa-key"></i>
                         </div>
                     </label>

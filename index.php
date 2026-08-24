@@ -1,6 +1,6 @@
-
-<!DOCTYPE php>
-  <php lang="pt-br">
+<?php require_once __DIR__ . '/config/bootstrap.php'; ?>
+<!DOCTYPE html>
+  <html lang="pt-br">
     <head>
       <meta charset="UTF-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -118,7 +118,7 @@
         </div>
 
         <div class="card-content">
-          <a href="./login.php" class="btn indigo lighten-3">Comprar</a>
+          <a href="./login.php?next=tela_pagamento.php%3Fproduto_id%3D1" class="btn indigo lighten-3">Comprar</a>
         </div>
       </div>
     </div>
@@ -137,7 +137,7 @@
         </div>
 
         <div class="card-content">
-          <a href="./login.php" class="btn indigo lighten-3">Comprar</a>
+          <a href="./login.php?next=tela_pagamento.php%3Fproduto_id%3D2" class="btn indigo lighten-3">Comprar</a>
         </div>
       </div>
     </div>  
@@ -155,7 +155,7 @@
         </div>
 
         <div class="card-content">
-          <a href="./login.php" class="btn indigo lighten-3">Comprar</a>
+          <a href="./login.php?next=tela_pagamento.php%3Fproduto_id%3D3" class="btn indigo lighten-3">Comprar</a>
         </div>
       </div>
     </div>
@@ -173,7 +173,7 @@
         </div>
 
         <div class="card-content">
-          <a href="./login.php" class="btn indigo lighten-3">Comprar</a>
+          <a href="./login.php?next=tela_pagamento.php%3Fproduto_id%3D4" class="btn indigo lighten-3">Comprar</a>
         </div>
       </div>
     </div>
@@ -194,7 +194,7 @@
         </div>
 
         <div class="card-content">
-          <a href="./login.php" class="btn indigo lighten-3">Comprar</a>
+          <a href="./login.php?next=tela_pagamento.php%3Fproduto_id%3D5" class="btn indigo lighten-3">Comprar</a>
         </div>
       </div>
     </div>
@@ -212,7 +212,7 @@
         </div>
 
         <div class="card-content">
-          <a href="./login.php" class="btn indigo lighten-3">Comprar</a>
+          <a href="./login.php?next=tela_pagamento.php%3Fproduto_id%3D6" class="btn indigo lighten-3">Comprar</a>
         </div>
       </div>
     </div>
@@ -230,7 +230,7 @@
         </div>
 
         <div class="card-content">
-          <a href="./login.php" class="btn indigo lighten-3">Comprar</a>
+          <a href="./login.php?next=tela_pagamento.php%3Fproduto_id%3D7" class="btn indigo lighten-3">Comprar</a>
         </div>
       </div>
     </div>
@@ -248,7 +248,7 @@
         </div>
 
         <div class="card-content">
-          <a href="./login.php" class="btn indigo lighten-3">Comprar</a>
+          <a href="./login.php?next=tela_pagamento.php%3Fproduto_id%3D8" class="btn indigo lighten-3">Comprar</a>
         </div>
       </div>
     </div>
@@ -269,7 +269,7 @@
         </div>
 
         <div class="card-content">
-          <a href="./login.php" class="btn indigo lighten-3">Comprar</a>
+          <a href="./login.php?next=tela_pagamento.php%3Fproduto_id%3D9" class="btn indigo lighten-3">Comprar</a>
         </div>
       </div>
     </div>
@@ -287,7 +287,7 @@
         </div>
 
         <div class="card-content">
-          <a href="./login.php" class="btn indigo lighten-3">Comprar</a>
+          <a href="./login.php?next=tela_pagamento.php%3Fproduto_id%3D10" class="btn indigo lighten-3">Comprar</a>
         </div>
       </div>
     </div>
@@ -305,7 +305,7 @@
         </div>
 
         <div class="card-content">
-          <a href="./login.php" class="btn indigo lighten-3">Comprar</a>
+          <a href="./login.php?next=tela_pagamento.php%3Fproduto_id%3D11" class="btn indigo lighten-3">Comprar</a>
         </div>
       </div>
     </div>
@@ -323,7 +323,7 @@
         </div>
 
         <div class="card-content">
-          <a href="./login.php" class="btn indigo lighten-3">Comprar</a>
+          <a href="./login.php?next=tela_pagamento.php%3Fproduto_id%3D12" class="btn indigo lighten-3">Comprar</a>
         </div>
       </div>
     </div>
@@ -357,12 +357,12 @@
             <br>
             <div id="e-mail">
             <p style="margin-top: 0px;" class="dark-text text-lighten-4"><img src="./icons/email.png" width="40px"></p>
-            <p style="margin-top: 10px; margin-left: 5px;">presentesdacegonha@gmail.com</p>
+            <p style="margin-top: 10px; margin-left: 5px;">contato@exemplo.com</p>
             </div>
 
             <div id="telefone">
             <p style="margin-bottom: 10px;" class="dark-text text-lighten-4"><img src="./icons/telefone.png" width="35px"></p>
-            <p style="margin-top: 5px; margin-left: 5px;">(88) 99905-9946</p>
+            <p style="margin-top: 5px; margin-left: 5px;">(00) 00000-0000</p>
             </div>
         </div>
       </div>
@@ -381,4 +381,4 @@
   <script type="text/javascript" src="js/materialize.min.js"></script>
 <script src="./cegonha.js"></script>
 </body>
-  </php>
+  </html>

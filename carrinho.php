@@ -1,6 +1,6 @@
-
-<!DOCTYPE php>
-  <php lang="pt-br">
+<?php require_once __DIR__ . '/config/bootstrap.php'; ?>
+<!DOCTYPE html>
+  <html lang="pt-br">
     <head>
       <meta charset="UTF-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -230,12 +230,12 @@
             <br>
             <div id="e-mail">
             <p style="margin-top: 0px;" class="dark-text text-lighten-4"><img src="./icons/email.png" width="40px"></p>
-            <p style="margin-top: 10px; margin-left: 5px;">presentesdacegonha@gmail.com</p>
+            <p style="margin-top: 10px; margin-left: 5px;">contato@exemplo.com</p>
             </div>
 
             <div id="telefone">
             <p style="margin-bottom: 0px;" class="dark-text text-lighten-4"><img src="./icons/telefone.png" width="35px"></p>
-            <p style="margin-top: 20px; margin-left: 5px;">(88) 99905-9946</p>
+            <p style="margin-top: 20px; margin-left: 5px;">(00) 00000-0000</p>
             </div>
         </div>
       </div>
@@ -257,4 +257,4 @@ alert("Você não tem cupons disponíveis para este pedido!");
 }
 </script>
 </body>
-  </php>
+  </html>

@@ -1,6 +1,10 @@
-
-<!DOCTYPE php>
-  <php lang="pt-br">
+<?php
+require_once __DIR__ . '/config/bootstrap.php';
+require_customer();
+$flash = pull_flash();
+?>
+<!DOCTYPE html>
+  <html lang="pt-br">
     <head>
       <meta charset="UTF-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -73,9 +77,9 @@
 
     <main>
       <!-- MEIO DA TELA -->
-      <h1 class="h1"><img src="./icons/checkmofi.png" id="h1img"><br>Compra Finalizada!</h1>
-      <p id="parágrafo">Parabéns! Seu pagamento foi realizado com sucesso e sua compra já foi efetuada.
-       Sua encomenda <br> será enviada e chegará em breve em sua residência.</p>
+      <h1 class="h1"><img src="./icons/checkmofi.png" id="h1img" alt=""><br>Pedido registrado!</h1>
+      <p id="parágrafo"><?php echo e($flash['message'] ?? 'A simulação foi concluída com sucesso.'); ?><br>
+       Nenhuma cobrança real foi processada.</p>
       </h1> 
     </main>
 
@@ -107,12 +111,12 @@
             <br>
             <div id="e-mail">
             <p style="margin-top: 0px;" class="dark-text text-lighten-4"><img src="./icons/email.png" width="40px"></p>
-            <p style="margin-top: 10px; margin-left: 5px;">presentesdacegonha@gmail.com</p>
+            <p style="margin-top: 10px; margin-left: 5px;">contato@exemplo.com</p>
             </div>
 
             <div id="telefone">
             <p style="margin-bottom: 10px;" class="dark-text text-lighten-4"><img src="./icons/telefone.png" width="35px"></p>
-            <p style="margin-top: 20px; margin-left: 5px;">(88) 99905-9946</p>
+            <p style="margin-top: 20px; margin-left: 5px;">(00) 00000-0000</p>
             </div>
         </div>
       </div>
@@ -130,4 +134,4 @@
   <!--LINK JAVA -->
   <script src="./alljs/script.js"></script>
 </body>
-  </php>
+  </html>

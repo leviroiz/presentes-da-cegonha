@@ -1,0 +1,35 @@
+* text=auto eol=lf
+
+# Arquivos acadêmicos preservam o formato original para manter diffs legíveis.
+*.php whitespace=cr-at-eol
+/alterar_cliente.php -text
+/alterar_clientebd.php -text
+/alterar_produto.php -text
+/alterar_produtobd.php -text
+/cadastrar_produto.php -text
+/cadastrar_produtobd.php -text
+/cadastro_cliente.php -text
+/cadastro_clientebd.php -text
+/carrinho.php -text
+/deletar_produto.php -text
+/deletar_user.php -text
+/home.php -text
+/index.php -text
+/listar_produtos.php -text
+/listar_user.php -text
+/login.php -text
+/login_admin.php -text
+/pagamentobd.php -text
+/paychecked.php -text
+/tela_admin.php -text
+/tela_pagamento.php -text
+/tela_sobre.php -text
+
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.ico binary
+*.woff binary
+*.woff2 binary

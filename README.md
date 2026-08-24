@@ -1,135 +1,185 @@
-# 🐣 Presentes da Cegonha — E-commerce
+<div align="center">
 
-Projeto de conclusão de curso desenvolvido em dupla, simulando um e-commerce completo de produtos infantis com painel administrativo, carrinho de compras e autenticação de usuários.
+# 🐣 Presentes da Cegonha
 
----
+**E-commerce acadêmico em PHP e MySQL, modernizado para portfólio com foco em segurança e organização.**
 
-## 🖼️ Preview
+![PHP](https://img.shields.io/badge/PHP-8.2-777BB4?style=flat-square&logo=php&logoColor=white)
+![MariaDB](https://img.shields.io/badge/MariaDB-11.4-003545?style=flat-square&logo=mariadb&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-Compose-2496ED?style=flat-square&logo=docker&logoColor=white)
+![Status](https://img.shields.io/badge/status-portf%C3%B3lio-6857C7?style=flat-square)
 
-### Página inicial
-![Home](./assets/index.png)
+</div>
 
-### Catálogo de produtos
-![Catálogo](./assets/listar-produtos.png)
+## Sobre o projeto
 
-### Painel administrativo - Cadastro de produto
-![Cadastro de produto](./assets/cadastrar-produto.png)
+O **Presentes da Cegonha** nasceu em 2023 como projeto de conclusão do curso Técnico em Informática. Desenvolvido em dupla, simula uma loja de produtos infantis com cadastro e autenticação de clientes, catálogo, pedido demonstrativo e painel administrativo.
 
-<details>
-<summary>📸 Ver mais screenshots (login, cadastro, dark mode)</summary>
+Em 2026, o código passou por uma modernização voltada a portfólio. A interface e a identidade do trabalho acadêmico foram preservadas, enquanto os fluxos críticos de autenticação, banco de dados e administração foram reorganizados e protegidos.
 
-#### Login
+> Este é um projeto educacional. O pedido e o pagamento são simulações; nenhuma cobrança real é processada.
+
+## Preview
+
+As capturas abaixo documentam a identidade visual do projeto acadêmico. Dados de contato e credenciais usados pela aplicação atual são fictícios ou locais.
+
+### Login
+
 ![Login](./assets/login-lightmode.png)
 
-#### Login - Dark Mode
-![Login Dark Mode](./assets/login-darkmode.png)
+### Cadastro de cliente
 
-#### Cadastro de cliente
 ![Cadastro](./assets/register.png)
 
-#### Tela administrativa
-![Tela Admin](./assets/tela-admin.png)
+<details>
+<summary>Ver mais telas</summary>
+
+### Login em modo escuro
+
+![Login em modo escuro](./assets/login-darkmode.png)
+
+### Gestão de produtos na versão acadêmica
+
+![Lista de produtos](./assets/listar-produtos.png)
+
+### Cadastro de produto na versão acadêmica
+
+![Cadastro de produto](./assets/cadastrar-produto.png)
+
+### Painel administrativo
+
+![Painel administrativo](./assets/tela-admin.png)
 
 </details>
 
----
+## Funcionalidades
 
-## 🖥️ Sobre o projeto
+### Cliente
 
-A **Presentes da Cegonha** é uma loja virtual de produtos para bebês e crianças, desenvolvida como projeto final do curso Técnico em Informática. O projeto contempla desde a interface do cliente até o painel administrativo, com integração a banco de dados MySQL e autenticação via Google.
+- Cadastro com validação server-side e senha protegida por hash.
+- Login com sessão regenerada após autenticação.
+- Vitrine responsiva com produtos e banners.
+- Seleção de produto e preenchimento de endereço.
+- Registro transacional de pedido demonstrativo com validação de estoque.
+- Carrinho visual preservado como parte do protótipo acadêmico.
 
----
+### Administração
 
-## ✨ Funcionalidades
+- Login e autorização separados do fluxo do cliente.
+- Cadastro, edição, listagem e remoção de produtos.
+- Listagem e atualização de clientes sem exposição de senhas.
+- Operações sensíveis por POST e protegidas contra CSRF.
+- Mensagens de retorno por sessão e redirecionamento HTTP.
 
-**Cliente:**
-- 🛍️ Vitrine de produtos com cards e imagens
-- 🛒 Carrinho de compras com resumo do pedido
-- 👤 Cadastro e login de usuários
-- 🔐 Login social com **Google (OAuth)**
-- 💳 Tela de pagamento
-- 📱 Menu responsivo (mobile e desktop)
-- 🎠 Carousel de banners promocionais
+## O que foi modernizado
 
-**Administrador:**
-- 🔑 Painel admin com login separado
-- 📦 Cadastrar, editar e deletar produtos
-- 👥 Listar e gerenciar usuários
-- 📊 Controle completo da loja
+| Antes, na versão acadêmica | Agora, na versão de portfólio |
+|---|---|
+| SQL concatenado com entradas do formulário | Consultas preparadas com `mysqli` |
+| Senhas em texto puro | `password_hash()` e `password_verify()` |
+| Credenciais no código e no dump | Configuração por variáveis de ambiente |
+| Exclusões acionadas por links GET | POST, CSRF e autorização administrativa |
+| Verificação de sessão repetida nas páginas | Bootstrap e guardas de autenticação reutilizáveis |
+| Valor do pedido enviado pelo navegador | Preço consultado e validado no servidor |
+| Baixa de estoque separada do pedido | Transação no banco com bloqueio do produto |
+| Dados pessoais de exemplo versionados | Catálogo fictício e banco sanitizado |
+| OAuth somente no navegador | Recurso removido até existir validação server-side |
 
----
+A análise completa está em [docs/SECURITY_REVIEW.md](./docs/SECURITY_REVIEW.md).
 
-## 🛠️ Tecnologias utilizadas
+## Tecnologias
 
-![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
-![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
-![PHP](https://img.shields.io/badge/PHP-777BB4?style=for-the-badge&logo=php&logoColor=white)
-![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
-![SCSS](https://img.shields.io/badge/SCSS-CC6699?style=for-the-badge&logo=sass&logoColor=white)
-![Materialize](https://img.shields.io/badge/Materialize-EE6E73?style=for-the-badge&logo=google&logoColor=white)
-![jQuery](https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white)
+- PHP 8.2 e extensão `mysqli`
+- MariaDB/MySQL
+- HTML5, CSS3, JavaScript e SCSS
+- Materialize CSS e jQuery no front-end original
+- Docker e Docker Compose para ambiente reproduzível
+- GitHub Actions para lint e verificações de segurança
 
----
+## Estrutura principal
 
-## 📁 Estrutura do projeto
-
+```text
+.
+├── config/                 # Ambiente, bootstrap e banco
+├── includes/               # Autenticação, CSRF e helpers
+├── database/migrations/    # Migração para o banco acadêmico
+├── scripts/                # Criação de admin e verificação estática
+├── tests/                  # Smoke tests de segurança
+├── css/, js/, img/         # Interface e assets do projeto
+├── bd_cegonha.sql          # Esquema e catálogo fictício
+├── docker-compose.yml      # Aplicação + MariaDB
+└── *.php                   # Páginas e endpoints
 ```
-presentes_da_cegonha/
-├── index.php               # Página principal (vitrine)
-├── login.php               # Login de clientes
-├── login_admin.php         # Login de administradores
-├── tela_admin.php          # Painel administrativo
-├── cadastro_cliente.php    # Cadastro de usuários
-├── carrinho.php            # Carrinho de compras
-├── tela_pagamento.php      # Tela de pagamento
-├── conexao.php             # Conexão com o banco de dados
-├── css/                    # Estilos por página
-├── js/                     # Scripts JavaScript
-├── img/                    # Imagens e banners
-├── produtos/               # Fotos dos produtos
-└── bd_cegonha.sql          # Banco de dados MySQL
+
+## Como executar com Docker
+
+Pré-requisito: Docker Desktop com Docker Compose.
+
+```bash
+git clone https://github.com/leviroiz/presentes-da-cegonha.git
+cd presentes-da-cegonha
+cp .env.example .env
+# Edite .env e substitua as senhas de exemplo antes de continuar.
+docker compose up --build -d
+docker compose exec app php scripts/create_admin.php
 ```
 
+Acesse:
+
+- Loja: `http://localhost:8080`
+- Login administrativo: `http://localhost:8080/login_admin.php`
+
+As credenciais ficam no arquivo local `.env`, ignorado pelo Git. Não há usuário administrador padrão; ele deve ser criado pelo script interativo.
+
+No PowerShell, use `Copy-Item .env.example .env` no lugar de `cp`.
+
+## Execução sem Docker
+
+1. Use PHP 8.2+ com a extensão `mysqli` e MySQL/MariaDB.
+2. Importe `bd_cegonha.sql`.
+3. Copie `.env.example` para `.env` e ajuste somente as credenciais locais.
+4. Execute `php scripts/create_admin.php`.
+5. Sirva a raiz do projeto com Apache ou `php -S localhost:8080`.
+
+O arquivo `.env` é ignorado pelo Git e não deve ser publicado.
+
+## Qualidade e testes
+
+```bash
+find . -type f -name '*.php' -print0 | xargs -0 -n1 php -l
+php scripts/security_check.php
+php tests/security_smoke.php
+```
+
+Essas verificações também são executadas no GitHub Actions a cada `push` e `pull request`.
+
+## Histórico preservado
+
+- `v1-academico-2023`: código original do projeto acadêmico.
+- `refactor/portfolio`: modernização de segurança e organização.
+
+Essa separação permite comparar a evolução técnica sem apagar o contexto em que o projeto foi criado.
+
+## Minha participação
+
+| Responsabilidade | Participação |
+|---|---|
+| Interface, responsividade e integração das telas | **Carlos Levi — Front-End e apoio no Back-End** |
+| Lógica de servidor na versão acadêmica | Desenvolvimento em dupla |
+| Auditoria e modernização para portfólio | **Carlos Levi** |
+
+## Limitações e próximos passos
+
+- Transformar o carrinho visual em um fluxo persistente de múltiplos itens.
+- Adicionar testes de integração com banco isolado.
+- Implementar recuperação de senha e proteção contra tentativas repetidas.
+- Aplicar HTTPS e cabeçalhos de segurança no ambiente publicado.
+- Revisar privacidade, retenção de dados e requisitos da LGPD antes de qualquer uso real.
+
 ---
 
-## ⚙️ Como rodar o projeto
+<div align="center">
 
-1. Instale o [XAMPP](https://www.apachefriends.org/) ou similar
-2. Clone o repositório na pasta `htdocs`
-3. Importe o arquivo `bd_cegonha.sql` no phpMyAdmin
-4. Configure as credenciais do banco em `conexao.php`
-5. Acesse `http://localhost/presentes_da_cegonha`
+Desenvolvido por [Carlos Levi](https://github.com/leviroiz) e equipe • Projeto acadêmico de 2023, modernizado para portfólio
 
----
-
-## 👥 Equipe
-
-| Função | Responsável |
-|--------|------------|
-| Front-End + apoio no Back-End | [Carlos Levi](https://github.com/leviroiz) |
-| Back-End | Colaborador |
-
----
-
-## 📚 O que aprendi
-
-- Desenvolvimento full-stack com PHP e MySQL
-- Autenticação de usuários e controle de sessões
-- Integração com login social via Google OAuth
-- CRUD completo com banco de dados relacional
-- Uso de framework CSS profissional (Materialize)
-- SCSS como pré-processador de CSS
-- Trabalho em equipe com divisão de responsabilidades
-
----
-
-## ⚠️ Observações
-
-- Projeto desenvolvido para fins acadêmicos
-- Não está em produção — requer ambiente local para execução
-- As credenciais do banco em `conexao.php` devem ser ajustadas conforme o ambiente
-
----
-
-<p align="center">Desenvolvido por <a href="https://github.com/leviroiz">Carlos Levi</a> e equipe • Projeto de Conclusão de Curso – 2023 🎓</p>
+</div>
