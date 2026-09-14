@@ -1,555 +1,406 @@
 <div align="center">
 
-# 🐣 Presentes da Cegonha
+# 🐣 Presentes da Cegonha — E-commerce
 
-### E-commerce acadêmico em PHP e MariaDB, modernizado para portfólio
+**Modernized academic e-commerce project built with PHP, MariaDB, Docker, automated tests, and CI/CD.**
 
-Projeto originalmente desenvolvido em 2023 e posteriormente revisado com foco em **segurança, qualidade de código, testes automatizados e ambiente reproduzível**.
+<p>
+  <img src="https://img.shields.io/badge/PHP-8.2-777BB4?style=for-the-badge&logo=php&logoColor=white" alt="PHP 8.2">
+  <img src="https://img.shields.io/badge/MariaDB-11.4-003545?style=for-the-badge&logo=mariadb&logoColor=white" alt="MariaDB">
+  <img src="https://img.shields.io/badge/Docker-Compose-2496ED?style=for-the-badge&logo=docker&logoColor=white" alt="Docker">
+  <img src="https://img.shields.io/badge/GitHub_Actions-CI-2088FF?style=for-the-badge&logo=githubactions&logoColor=white" alt="GitHub Actions">
+</p>
 
-[![Quality checks](https://github.com/leviroiz/presentes-da-cegonha/actions/workflows/quality.yml/badge.svg)](https://github.com/leviroiz/presentes-da-cegonha/actions/workflows/quality.yml)
-![PHP](https://img.shields.io/badge/PHP-8.2-777BB4?style=flat-square&logo=php&logoColor=white)
-![MariaDB](https://img.shields.io/badge/MariaDB-11.4-003545?style=flat-square&logo=mariadb&logoColor=white)
-![Docker](https://img.shields.io/badge/Docker-Compose-2496ED?style=flat-square&logo=docker&logoColor=white)
-![License](https://img.shields.io/badge/Licença-MIT-green?style=flat-square)
+[![Quality Checks](https://github.com/leviroiz/presentes-da-cegonha/actions/workflows/quality.yml/badge.svg)](https://github.com/leviroiz/presentes-da-cegonha/actions/workflows/quality.yml)
 
 </div>
 
 ---
 
-## 🎯 Sobre o projeto
+## 🚀 Overview
 
-O **Presentes da Cegonha** nasceu em 2023 como projeto de conclusão do curso Técnico em Informática.
+**Presentes da Cegonha** started in 2023 as a final project for a Technical Degree in Information Technology.
 
-Desenvolvido em dupla, o sistema simula um e-commerce de produtos infantis com:
+The original application simulated an e-commerce platform for children's products with:
 
-- cadastro e autenticação de clientes;
-- catálogo de produtos;
-- fluxo demonstrativo de pedido;
-- controle de estoque;
-- painel administrativo;
-- cadastro e gerenciamento de produtos e clientes.
+- customer registration and authentication
+- product catalog
+- administrative dashboard
+- product and customer management
+- stock control
+- demonstration order flow
 
-Em 2026, retomei o projeto com outro objetivo: **transformar um trabalho acadêmico antigo em uma peça de portfólio tecnicamente mais madura**.
+In 2026, I revisited the project with a different goal: **turning an old academic application into a more mature portfolio project**.
 
-A identidade visual e parte da estrutura original foram preservadas, enquanto áreas críticas como autenticação, banco de dados, autorização, segurança e pedidos passaram por uma revisão significativa.
+The modernization focused on:
 
-> Este continua sendo um projeto educacional.
+- web security
+- server-side validation
+- authentication and authorization
+- database integrity
+- automated testing
+- Docker-based reproducibility
+- CI/CD
+
+> [!NOTE]
+> This remains an educational project.
 >
-> Pedidos e pagamentos são simulados e nenhum processamento financeiro real é realizado.
+> Orders and payments are simulated, and no real financial processing is performed.
 
 ---
 
 ## 🖥️ Preview
 
-### Login
+### Customer Login
 
-![Tela de login](./assets/login-lightmode.png)
+<p align="center">
+  <img src="./assets/login-lightmode.png" alt="Customer login screen" width="900">
+</p>
 
-### Cadastro de cliente
+### Customer Registration
 
-![Cadastro de cliente](./assets/register.png)
+<p align="center">
+  <img src="./assets/register.png" alt="Customer registration screen" width="900">
+</p>
 
 <details>
-<summary><strong>📸 Ver mais telas</strong></summary>
+<summary><strong>📸 More Screens</strong></summary>
 
 <br>
 
-### Login em modo escuro
+### Dark Mode Login
 
-![Login em modo escuro](./assets/login-darkmode.png)
+![Dark mode login](./assets/login-darkmode.png)
 
-### Gestão de produtos
+### Product Management
 
-![Lista de produtos](./assets/listar-produtos.png)
+![Product list](./assets/listar-produtos.png)
 
-### Cadastro de produto
+### Product Registration
 
-![Cadastro de produto](./assets/cadastrar-produto.png)
+![Product registration](./assets/cadastrar-produto.png)
 
-### Painel administrativo
+### Admin Dashboard
 
-![Painel administrativo](./assets/tela-admin.png)
+![Admin dashboard](./assets/tela-admin.png)
 
 </details>
 
 ---
 
-## 🛍️ Funcionalidades
+## ✨ Key Features
 
-### Cliente
+### 🛍️ Customer Flow
 
-O fluxo do cliente inclui:
+- account creation
+- server-side input validation
+- secure password storage
+- session-based authentication
+- product catalog
+- product details
+- address information
+- demonstration order creation
+- stock validation
+- order confirmation
 
-- criação de conta;
-- validação dos dados no servidor;
-- armazenamento seguro de senha;
-- autenticação por sessão;
-- catálogo de produtos;
-- visualização de produtos;
-- preenchimento de endereço;
-- registro demonstrativo de pedido;
-- validação de estoque;
-- confirmação do pedido.
+### 🛠️ Administration
 
-O carrinho visual original também foi preservado como parte do contexto acadêmico do projeto.
-
-### Administração
-
-O painel administrativo permite:
-
-- autenticação separada do cliente;
-- controle de acesso administrativo;
-- cadastro de produtos;
-- edição de produtos;
-- listagem de produtos;
-- exclusão de produtos;
-- gerenciamento de clientes;
-- atualização das informações;
-- controle de estoque.
-
-Operações que alteram estado utilizam requisições `POST` e proteção CSRF.
+- separate administrator authentication
+- role-based access control
+- product CRUD
+- customer management
+- stock control
+- server-side validation
+- state-changing operations using `POST`
+- CSRF protection
 
 ---
 
-## 🔄 De projeto acadêmico a projeto de portfólio
+## 🔄 From Academic Project to Portfolio Project
 
-Uma das partes mais importantes deste repositório é mostrar a evolução técnica do projeto.
+One of the main goals of this repository is to show technical evolution.
 
-| Versão acadêmica — 2023 | Versão modernizada |
+| Academic version — 2023 | Modernized version |
 |---|---|
-| SQL construído por concatenação | Prepared statements com `mysqli` |
-| Senhas armazenadas em texto puro | `password_hash()` e `password_verify()` |
-| Credenciais presentes no código | Variáveis de ambiente |
-| Operações sensíveis por GET | POST + CSRF + autorização |
-| Verificação de sessão espalhada | Guardas de autenticação reutilizáveis |
-| Dados do navegador tratados como confiáveis | Valores críticos validados no servidor |
-| Pedido e estoque tratados separadamente | Operação transacional no banco |
-| Dados pessoais de exemplo | Base sanitizada e dados fictícios |
-| Login social apenas no navegador | Recurso removido até existir validação server-side |
+| SQL built through string concatenation | Prepared statements with `mysqli` |
+| Plain-text passwords | `password_hash()` and `password_verify()` |
+| Credentials inside source code | Environment variables |
+| Sensitive actions through GET | POST + CSRF + authorization |
+| Scattered session checks | Reusable authentication guards |
+| Browser values treated as trusted | Critical values validated server-side |
+| Orders and stock handled separately | Transactional database operation |
+| Personal sample data | Sanitized synthetic dataset |
+| Client-side social login only | Removed until server-side validation exists |
 
-A versão acadêmica original continua disponível na tag:
-
-`v1-academico-2023`
-
-A branch `main` representa a versão atualmente modernizada.
-
----
-
-## 🔐 Segurança
-
-A revisão do projeto identificou vários padrões comuns em aplicações desenvolvidas durante o início do aprendizado.
-
-Em vez de esconder esse histórico, a modernização foi usada para estudar e implementar controles mais adequados.
-
-### Controles implementados
-
-- prepared statements com `mysqli`;
-- `password_hash()` e `password_verify()`;
-- regeneração do ID da sessão após autenticação;
-- cookies de sessão com `HttpOnly`;
-- `SameSite=Lax`;
-- suporte a flag `Secure` por ambiente;
-- separação entre autenticação de cliente e administrador;
-- tokens CSRF em operações que alteram estado;
-- exclusões administrativas por POST;
-- validação server-side;
-- escape de dados na saída HTML;
-- credenciais por variáveis de ambiente;
-- remoção de dados pessoais da base versionada;
-- proteção contra acesso HTTP direto a arquivos internos;
-- preço do pedido definido pelo servidor;
-- baixa de estoque transacional.
-
-A análise completa está documentada em:
-
-👉 [docs/SECURITY_REVIEW.md](./docs/SECURITY_REVIEW.md)
-
----
-
-## 💳 Pedido e integridade do estoque
-
-Um dos fluxos revisados com mais cuidado foi o registro do pedido.
-
-Na versão modernizada, o valor recebido do navegador **não é considerado fonte confiável para o preço**.
-
-O fluxo segue a lógica:
+The original academic version is preserved in:
 
 ```text
-Cliente seleciona produto
-        ↓
-Servidor recebe o ID
-        ↓
-Produto é consultado no banco
-        ↓
-Preço real é obtido pelo servidor
-        ↓
-Estoque é validado
-        ↓
-Pedido é registrado
-        ↓
-Estoque é atualizado
-        ↓
-Transação é concluída
+v1-academico-2023
 ```
 
-Isso evita que alterações feitas no frontend sejam utilizadas para modificar o valor efetivamente registrado pelo sistema.
-
-A gravação do pedido e a atualização de estoque são tratadas de forma transacional.
+The `main` branch contains the modernized portfolio version.
 
 ---
 
-## 🏗️ Arquitetura
+## 🔐 Security Improvements
 
-A aplicação utiliza uma arquitetura PHP tradicional com páginas e endpoints server-side.
+The modernization introduced several security controls:
+
+- prepared statements with `mysqli`
+- secure password hashing
+- session ID regeneration after authentication
+- `HttpOnly` session cookies
+- `SameSite=Lax`
+- optional `Secure` cookie flag
+- separate customer and administrator authentication
+- CSRF protection
+- server-side validation
+- output escaping
+- credentials through environment variables
+- sanitized database content
+- protection against direct access to internal files
+- server-side product pricing
+- transactional stock updates
+
+A more detailed security review is available in:
+
+[🔐 Security Review](./docs/SECURITY_REVIEW.md)
+
+---
+
+## 💳 Order & Stock Integrity
+
+The modernized order flow does not trust pricing values received from the browser.
 
 ```text
-Navegador
-    ↓
+Customer selects product
+        │
+        ▼
+Server receives product ID
+        │
+        ▼
+Product loaded from database
+        │
+        ▼
+Server determines real price
+        │
+        ▼
+Stock validated
+        │
+        ▼
+Order recorded
+        │
+        ▼
+Stock updated
+        │
+        ▼
+Database transaction committed
+```
+
+This prevents manipulated frontend values from changing the price stored by the application.
+
+Order creation and stock reduction are handled inside the same database transaction.
+
+---
+
+## 🏗️ Architecture
+
+```text
+Browser
+   │
+   ▼
 HTML + CSS + JavaScript
-    ↓
+   │
+   ▼
 PHP 8.2
-    ↓
-Autenticação / CSRF / Regras de negócio
-    ↓
+   │
+   ▼
+Authentication / CSRF / Business Rules
+   │
+   ▼
 mysqli
-    ↓
+   │
+   ▼
 MariaDB
 ```
 
-O projeto preserva parte da arquitetura original para manter seu contexto acadêmico, enquanto componentes compartilhados foram reorganizados durante a modernização.
+The project intentionally preserves part of its original architecture while modernizing shared components, security controls, and development tooling.
 
 ---
 
-## 🛠️ Tecnologias
+## 🛠️ Tech Stack
 
-### Backend e dados
+### Backend & Database
 
-![PHP](https://img.shields.io/badge/PHP-8.2-777BB4?style=for-the-badge&logo=php&logoColor=white)
-![MariaDB](https://img.shields.io/badge/MariaDB-11.4-003545?style=for-the-badge&logo=mariadb&logoColor=white)
-![MySQL](https://img.shields.io/badge/MySQL-Compatible-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
-
-- PHP 8.2;
-- `mysqli`;
-- MariaDB / MySQL;
-- SQL;
-- sessões PHP.
+`PHP 8.2` · `mysqli` · `MariaDB` · `MySQL-compatible SQL`
 
 ### Frontend
 
-![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
-![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
-![Sass](https://img.shields.io/badge/SCSS-CC6699?style=for-the-badge&logo=sass&logoColor=white)
+`HTML5` · `CSS3` · `JavaScript` · `SCSS` · `Materialize CSS` · `jQuery`
 
-- HTML5;
-- CSS3;
-- JavaScript;
-- SCSS;
-- Materialize CSS;
-- jQuery.
+### Development & Quality
 
-### Ambiente e qualidade
-
-![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
-![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?style=for-the-badge&logo=githubactions&logoColor=white)
-![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)
-
-- Docker;
-- Docker Compose;
-- Git;
-- GitHub;
-- GitHub Actions;
-- testes automatizados.
+`Docker` · `Docker Compose` · `GitHub Actions` · `Git`
 
 ---
 
-## 🧪 Testes e CI
+## 🧪 Testing & CI
 
-O projeto possui um pipeline executado automaticamente em `push` e `pull_request`.
+The project includes automated quality and integration checks executed on `push` and `pull_request`.
 
 ```text
 Push / Pull Request
-        ↓
+        │
+        ▼
 GitHub Actions
-        ↓
-PHP syntax check
-        ↓
-Security checks
-        ↓
-Smoke tests
-        ↓
-MariaDB isolado
-        ↓
-Servidor PHP de teste
-        ↓
-Testes HTTP de integração
+        │
+        ├── PHP Syntax Checks
+        ├── Security Checks
+        ├── Smoke Tests
+        └── Integration Tests
+                │
+                ▼
+          MariaDB 11.4
+                │
+                ▼
+        PHP Test Server
 ```
 
-### Quality checks
+The integration workflow validates behaviors including:
 
-O CI executa:
+- customer registration
+- password hashing
+- customer login
+- session persistence
+- anonymous admin access blocking
+- administrator login
+- product creation
+- product editing
+- product deletion
+- database persistence
+- CSRF enforcement
+- demonstration order creation
+- server-side pricing
+- correct stock reduction
+- order confirmation
 
-```bash
-find . -type f -name '*.php' -print0 | xargs -0 -n1 php -l
-
-php scripts/security_check.php
-
-php tests/security_smoke.php
-```
-
-### Testes de integração
-
-Um segundo job sobe uma instância isolada do **MariaDB 11.4**, inicializa o banco, inicia a aplicação utilizando o servidor embutido do PHP e executa requisições HTTP contra o sistema.
-
-Entre os comportamentos testados estão:
-
-- acesso à página de cadastro;
-- presença de cabeçalhos de segurança;
-- bloqueio de escrita sem token CSRF;
-- cadastro de cliente;
-- persistência do cliente;
-- senha armazenada utilizando hash;
-- login do cliente;
-- manutenção da sessão;
-- bloqueio de painel administrativo para usuário anônimo;
-- login administrativo;
-- cadastro de produto;
-- persistência no banco;
-- edição de produto;
-- listagem;
-- exclusão;
-- pedido demonstrativo;
-- utilização do preço armazenado no servidor;
-- redução correta do estoque;
-- página de confirmação.
-
-Os dados criados durante a suíte são fictícios e removidos após os testes.
+Test data is synthetic and removed after execution.
 
 ---
 
-## 🐳 Executando com Docker
+## 🐳 Running with Docker
 
-### Pré-requisito
+### Requirements
 
-Docker Desktop com Docker Compose.
+- Docker Desktop
+- Docker Compose
 
-Clone o repositório:
+Clone the repository:
 
 ```bash
 git clone https://github.com/leviroiz/presentes-da-cegonha.git
 cd presentes-da-cegonha
 ```
 
-Crie o arquivo local de configuração:
+Create the local environment file:
 
 ```bash
 cp .env.example .env
 ```
 
-No PowerShell:
+On PowerShell:
 
 ```powershell
 Copy-Item .env.example .env
 ```
 
-Edite as credenciais de exemplo no `.env`.
-
-Depois execute:
+Configure your local credentials and start the environment:
 
 ```bash
 docker compose up --build -d
 ```
 
-Crie um administrador:
+Create an administrator:
 
 ```bash
 docker compose exec app php scripts/create_admin.php
 ```
 
-Acesse:
+Open:
 
 ```text
-Loja
+Store
 http://localhost:8080
 
-Administração
+Administration
 http://localhost:8080/login_admin.php
 ```
 
-Não existe usuário administrador padrão.
-
-As credenciais são definidas localmente e o arquivo `.env` é ignorado pelo Git.
+No default administrator account is included.
 
 ---
 
-## 💻 Executando sem Docker
+## 🕒 Project Evolution
 
-Também é possível executar o projeto diretamente.
-
-Requisitos:
-
-- PHP 8.2+;
-- extensão `mysqli`;
-- MySQL ou MariaDB.
-
-Passos:
-
-1. importe `bd_cegonha.sql`;
-2. copie `.env.example` para `.env`;
-3. configure as credenciais locais;
-4. execute:
-
-```bash
-php scripts/create_admin.php
-```
-
-5. sirva a aplicação utilizando Apache ou:
-
-```bash
-php -S localhost:8080
-```
-
----
-
-## 📁 Estrutura principal
-
-```text
-presentes-da-cegonha/
-│
-├── .github/
-│   └── workflows/
-│       └── quality.yml
-│
-├── config/
-│
-├── database/
-│   └── migrations/
-│
-├── docs/
-│   └── SECURITY_REVIEW.md
-│
-├── includes/
-│
-├── scripts/
-│
-├── tests/
-│
-├── assets/
-│
-├── css/
-├── js/
-├── img/
-│
-├── bd_cegonha.sql
-├── docker-compose.yml
-├── Dockerfile
-├── .env.example
-└── *.php
-```
-
----
-
-## 🕒 Histórico preservado
-
-O projeto mantém duas etapas importantes da sua evolução:
+The repository preserves two important stages:
 
 ### `v1-academico-2023`
 
-Versão original construída durante o curso Técnico em Informática.
-
-Ela foi preservada como registro do projeto e do nível de conhecimento daquela época.
+The original version developed during my Technical Degree in Information Technology.
 
 ### `main`
 
-Versão revisada para portfólio.
+The modernized portfolio version, including:
 
-Inclui:
+- security improvements
+- code reorganization
+- Docker environment
+- sanitized database
+- automated tests
+- CI
+- technical documentation
 
-- modernização de segurança;
-- reorganização de código;
-- ambiente Docker;
-- banco sanitizado;
-- testes;
-- integração contínua;
-- documentação técnica.
-
-Essa separação permite visualizar a evolução do projeto sem apagar seu contexto original.
+This makes it possible to compare the evolution of the project without removing its original academic context.
 
 ---
 
-## 👨‍💻 Minha participação
+## 👨‍💻 Contribution
 
-O projeto acadêmico original foi desenvolvido em dupla.
+The original academic project was developed by two students.
 
-| Área | Participação |
+| Area | Contribution |
 |---|---|
-| Interface e responsividade | **Carlos Levi** |
-| Integração das telas | **Carlos Levi** |
-| Backend original | Desenvolvimento em dupla |
-| Auditoria de segurança em 2026 | **Carlos Levi** |
-| Modernização para portfólio | **Carlos Levi** |
-| Docker e ambiente reproduzível | **Carlos Levi** |
-| Testes e CI | **Carlos Levi** |
-| Documentação técnica | **Carlos Levi** |
+| Interface and responsiveness | **Carlos Levi** |
+| Screen integration | **Carlos Levi** |
+| Original backend | Developed collaboratively |
+| 2026 security review | **Carlos Levi** |
+| Portfolio modernization | **Carlos Levi** |
+| Docker environment | **Carlos Levi** |
+| Tests and CI | **Carlos Levi** |
+| Technical documentation | **Carlos Levi** |
 
-Essa distinção é mantida para representar de forma transparente o que foi desenvolvido originalmente em equipe e o que foi realizado posteriormente durante a modernização.
-
----
-
-## 📌 Limitações
-
-Apesar das melhorias, este continua sendo um projeto acadêmico e não uma plataforma de comércio eletrônico pronta para produção.
-
-Algumas limitações conhecidas:
-
-- pagamento apenas demonstrativo;
-- ausência de gateway de pagamento;
-- carrinho original sem persistência completa de múltiplos itens;
-- ausência de recuperação de senha;
-- ausência de rate limiting;
-- ausência de observabilidade de produção;
-- requisitos de privacidade e LGPD não foram projetados para uso real.
-
-O objetivo da modernização não foi transformar o projeto em um produto comercial, mas demonstrar evolução técnica e aplicar práticas aprendidas posteriormente.
+This distinction is intentionally preserved to accurately represent both the original team effort and the later modernization work.
 
 ---
 
-## 🧠 O que este projeto demonstra
+## ⚠️ Limitations
 
-O Presentes da Cegonha representa principalmente a evolução entre **construir uma aplicação que funciona** e começar a pensar em **como construir software de forma mais segura, testável e reproduzível**.
+This is still an academic project and is not intended to be a production-ready e-commerce platform.
 
-O projeto reúne práticas relacionadas a:
+Known limitations include:
 
-- desenvolvimento backend com PHP;
-- bancos relacionais;
-- autenticação e sessões;
-- segurança web;
-- CSRF;
-- prepared statements;
-- hash de senhas;
-- transações;
-- integridade de estoque;
-- desenvolvimento frontend;
-- Docker;
-- testes de integração;
-- GitHub Actions;
-- CI;
-- Git e GitHub;
-- manutenção e modernização de código legado.
+- simulated payments
+- no payment gateway
+- limited multi-item cart persistence
+- no password recovery
+- no rate limiting
+- no production observability
+- privacy and regulatory requirements were not designed for real-world deployment
+
+The purpose of the modernization was not to turn the project into a commercial product, but to demonstrate technical evolution and apply practices learned after the original implementation.
 
 ---
 
-## 👨‍💻 Autor
+## 📄 License
 
-Modernização e manutenção por **Carlos Levi**.
-
-Projeto acadêmico original desenvolvido em dupla em 2023.
-
-[![GitHub](https://img.shields.io/badge/GitHub-leviroiz-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/leviroiz)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-leviroiz-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/leviroiz)
-
----
-
-## 📄 Licença
-
-Código disponibilizado sob a [Licença MIT](LICENSE).
+This project is available under the [MIT License](LICENSE).
